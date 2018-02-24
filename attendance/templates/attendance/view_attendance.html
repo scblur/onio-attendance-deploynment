@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block head %}
+  <style media="screen">
+    table {
+        color: #333;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 1200px;
+        height: 100px;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <center>
+      <h2>Hello {{ request.user.username }}, Your Attendance is Listed here:</h2>
+    </center>
+  </div>
+  <center>
+  <div class="container">
+    {% if session_list %}
+      <table class='table-bordered' cellpadding="4" border="">
+        <thead>
+          <th><center>Session</center></th>
+          <th><center>Date & Time</center></th>
+        </thead>
+      {% for session in session_list %}
+      <tr>
+        <td><center>{{ session.session }}</center></td>
+        <td><center>{{ session.t_date }}</center></td>
+      </tr>
+      {% endfor %}
+      </table>
+    {% else %}
+      <p>No Session Records Found!!</p>
+    {% endif %}
+  </center>
+  </div>
+  </div>
+  <br><br>
+{% endblock %}
