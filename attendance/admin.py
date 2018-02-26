@@ -5,8 +5,8 @@ from . import models
 
 class SessionAdmin(admin.ModelAdmin):
 
-    list_filter = ['user','session','t_date']
-    list_display = ['user','session','t_date']
-
+    list_filter = ['user','session','only_date','t_date']
+    list_display = ['user','session','only_date','t_date']
+    # readonly_fields = ("user","session","only_date","t_date")
 
 admin.site.register(Session,SessionAdmin)
