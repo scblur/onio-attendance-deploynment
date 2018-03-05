@@ -1,8 +1,34 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
+{% block head %}
+  <script>
+
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+  }
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+  </script>
+{% endblock %}
 {% block content %}
   <div class="container">
     <div class="jumbotron">
+      <center>
+      {# Time #}
+      <div class="time">
+          <h1><body onload="startTime()"><div id="txt"></div></h1>
+      </div>
+      <center>
       <h2>Hello {{ request.user.username }}, please select your Session:</h2>
       <br>
       <form method="POST" action="{% url 'attendance:create' %}">
@@ -11,5 +37,6 @@
         <input type="submit" value="Mark Attendence" class='btn btn-primary btn-large'>
       </form>
     </div>
+  </center>
   </div>
 {% endblock %}

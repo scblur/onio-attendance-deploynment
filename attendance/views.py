@@ -17,7 +17,7 @@ class CreateSessionView(LoginRequiredMixin,CreateView):
     model = Session
     template_name = "attendance/attendance.html"
     # unique_together = ('session', 'only_date')
-    readonly_fields = ("session",)
+    # readonly_fields = ("session",)
 
 
     def form_valid(self,form):

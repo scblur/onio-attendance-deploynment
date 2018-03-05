@@ -22,12 +22,12 @@ G = D.strftime("%I:%M:%S%p")
 # Session
 S = str(datetime.now().time()).strip(':')
 A = [int(i) for i in S.replace('.', ':').split(':')]
-if A[0] == 10 and A[1] in range(0,61):
+if A[0] == 9 and A[1] in range(0,61):
     # CHOICES=[('Morning','Morning')]
     CHOICE=[
         ("Morning","Morning")
             ]
-elif A[0] in range(18,22) and A[1] in range(0,61):
+elif A[0] in range(14,22) and A[1] in range(0,61):
     CHOICE=[
         ("Evening","Evening")
             ]
@@ -39,13 +39,11 @@ else:
 # CHOICES=[('Morning','Morning'),('Evening','Evening')]
 class Session(models.Model):
     user = models.ForeignKey(User)
-    session = models.CharField(max_length=25,choices=CHOICE,default="No Attendance")
-    # session = models.CharField(max_length=25,choices=CHOICES, empty_label=None)
+    session = models.CharField(max_length=50,choices=CHOICE,default="NoAttendance")
+
     t_date = models.DateTimeField(default=timezone.now,blank=True)
     only_date = models.DateField(default=timezone.now().today,blank=True)
-    # only_day = models.CharField(max_length=30,default=timezone.now().day,blank=True)
-    # only_time = models.TimeField(max_length=50, default=timezone.now().now,blank=True)
-    # ip_address = models.IPAddressField()
+
 
 
 
