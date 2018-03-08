@@ -27,7 +27,7 @@ if A[0] == 9 and A[1] in range(0,61):
     CHOICE=[
         ("Morning","Morning")
             ]
-elif A[0] in range(14,22) and A[1] in range(0,61):
+elif A[0] in range(14,16) and A[1] in range(0,61):
     CHOICE=[
         ("Evening","Evening")
             ]
